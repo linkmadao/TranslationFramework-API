@@ -1,0 +1,19 @@
+{
+    "id": "5dfd2d10-53d2-43ed-99ba-e637dabe28de",
+    "arquivo": "cmn.clsx",
+    "caminhoArquivo": "/auth_64/main/00/s02",
+    "conteudo":[
+        {
+            "linha": "1",
+            "offset": "304524",
+            "original": "A Few Months Ago",
+            "traducao": "Alguns Meses Atrás"
+        },
+        {
+            "linha": "2",
+            "offset": "446396",
+            "original": "Sorry, but it's the thought that counts!",
+            "traducao": "Desculpe, mas o que vale é a intenção!"
+        }
+    ]
+}
