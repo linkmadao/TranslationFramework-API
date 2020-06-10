@@ -1,0 +1,9 @@
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Comum\obj\Debug\netcoreapp2.2\TranslationFramework.Comum.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Comum\obj\Debug\netcoreapp2.2\TranslationFramework.Comum.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Comum\obj\Debug\netcoreapp2.2\TranslationFramework.Comum.AssemblyInfo.cs
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Comum\bin\Debug\netcoreapp2.2\TranslationFramework.Comum.deps.json
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Comum\bin\Debug\netcoreapp2.2\TranslationFramework.Comum.dll
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Comum\bin\Debug\netcoreapp2.2\TranslationFramework.Comum.pdb
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Comum\obj\Debug\netcoreapp2.2\TranslationFramework.Comum.csprojAssemblyReference.cache
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Comum\obj\Debug\netcoreapp2.2\TranslationFramework.Comum.dll
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Comum\obj\Debug\netcoreapp2.2\TranslationFramework.Comum.pdb

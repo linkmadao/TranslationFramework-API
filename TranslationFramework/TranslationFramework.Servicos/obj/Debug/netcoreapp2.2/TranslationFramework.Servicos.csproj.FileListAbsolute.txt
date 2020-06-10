@@ -1,0 +1,12 @@
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\obj\Debug\netcoreapp2.2\TranslationFramework.Servicos.csprojAssemblyReference.cache
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\obj\Debug\netcoreapp2.2\TranslationFramework.Servicos.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\obj\Debug\netcoreapp2.2\TranslationFramework.Servicos.AssemblyInfo.cs
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.Servicos.deps.json
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.Servicos.dll
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.Servicos.pdb
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.Comum.dll
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.Comum.pdb
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\obj\Debug\netcoreapp2.2\TranslationFramework.Servicos.csproj.CopyComplete
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\obj\Debug\netcoreapp2.2\TranslationFramework.Servicos.dll
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\obj\Debug\netcoreapp2.2\TranslationFramework.Servicos.pdb
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\obj\Debug\netcoreapp2.2\TranslationFramework.Servicos.csproj.CoreCompileInputs.cache
