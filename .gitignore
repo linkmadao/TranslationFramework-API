@@ -60,6 +60,7 @@ dlldata.c
 BenchmarkDotNet.Artifacts/
 
 # .NET Core
+project.assets.json
 project.lock.json
 project.fragment.lock.json
 artifacts/
@@ -204,8 +205,12 @@ PublishScripts/
 # Uncomment if necessary however generally it will be regenerated when needed
 #!**/[Pp]ackages/repositories.config
 # NuGet v3's project.json files produces more ignorable files
+*.nuget.cache
 *.nuget.props
 *.nuget.targets
+*.nuget.dgspec.json
+*.nuget.g.props
+*.nuget.g.targets
 
 # Microsoft Azure Build Output
 csx/
@@ -369,3 +374,6 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Configurações Específicas
+*.cache
