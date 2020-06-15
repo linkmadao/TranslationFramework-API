@@ -14,5 +14,14 @@
 
         public const string ArquivoNaoEncontrado = 
             "Não foi possível obter o arquivo desejado.";
+
+        public const string CaminhoInexistente =
+            "Caminho não informado";
+
+        public const string FalhaConverterPropriedade =
+            "Falha ao converter propriedade {0}. {1}";
+
+        public const string NomeArquivoInexistente =
+            "Nome do Arquivo não informado";
     }
 }

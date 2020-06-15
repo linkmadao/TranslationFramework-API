@@ -22,3 +22,35 @@ C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework
 C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework\obj\Debug\netcoreapp2.2\TranslationFramework.API.genruntimeconfig.cache
 C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\YakuzaKiwami.xlsx
 C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework\obj\Debug\netcoreapp2.2\TranslationFramework.API.csproj.CoreCompileInputs.cache
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\obj\Debug\netcoreapp2.2\TranslationFramework.API.csprojAssemblyReference.cache
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\obj\Debug\netcoreapp2.2\TranslationFramework.API.AssemblyInfoInputs.cache
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\obj\Debug\netcoreapp2.2\TranslationFramework.API.AssemblyInfo.cs
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\obj\Debug\netcoreapp2.2\TranslationFramework.API.csproj.CoreCompileInputs.cache
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\obj\Debug\netcoreapp2.2\TranslationFramework.API.RazorAssemblyInfo.cache
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\obj\Debug\netcoreapp2.2\TranslationFramework.API.RazorAssemblyInfo.cs
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\appsettings.Development.json
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\appsettings.json
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\YakuzaKiwami.xlsx
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.API.deps.json
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.API.runtimeconfig.json
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.API.runtimeconfig.dev.json
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.API.dll
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.API.pdb
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.Comum.dll
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.Dados.dll
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.DTO.dll
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.Enumeradores.dll
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.Modelos.dll
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.Servicos.dll
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.Servicos.pdb
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.Comum.pdb
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.Dados.pdb
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.DTO.pdb
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.Enumeradores.pdb
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.Modelos.pdb
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\obj\Debug\netcoreapp2.2\TranslationFramework.API.RazorTargetAssemblyInfo.cache
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\obj\Debug\netcoreapp2.2\TranslationFramework.API.csproj.CopyComplete
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\obj\Debug\netcoreapp2.2\TranslationFramework.API.dll
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\obj\Debug\netcoreapp2.2\TranslationFramework.API.pdb
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\obj\Debug\netcoreapp2.2\TranslationFramework.API.genruntimeconfig.cache

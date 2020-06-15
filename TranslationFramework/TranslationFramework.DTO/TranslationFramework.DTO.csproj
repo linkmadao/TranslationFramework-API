@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TranslationFramework.Comum\TranslationFramework.Comum.csproj" />
+    <ProjectReference Include="..\TranslationFrameworkEnumeradores\TranslationFramework.Enumeradores.csproj" />
+  </ItemGroup>
+
+</Project>

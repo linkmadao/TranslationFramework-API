@@ -10,3 +10,23 @@ C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework
 C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\obj\Debug\netcoreapp2.2\TranslationFramework.Servicos.dll
 C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\obj\Debug\netcoreapp2.2\TranslationFramework.Servicos.pdb
 C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\obj\Debug\netcoreapp2.2\TranslationFramework.Servicos.csproj.CoreCompileInputs.cache
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\obj\Debug\netcoreapp2.2\TranslationFramework.Servicos.csprojAssemblyReference.cache
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\obj\Debug\netcoreapp2.2\TranslationFramework.Servicos.AssemblyInfoInputs.cache
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\obj\Debug\netcoreapp2.2\TranslationFramework.Servicos.AssemblyInfo.cs
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\obj\Debug\netcoreapp2.2\TranslationFramework.Servicos.csproj.CoreCompileInputs.cache
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.Servicos.deps.json
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.Servicos.dll
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.Servicos.pdb
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.Comum.dll
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.Dados.dll
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.DTO.dll
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.Enumeradores.dll
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.Modelos.dll
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.Dados.pdb
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.Comum.pdb
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.DTO.pdb
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.Enumeradores.pdb
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.Modelos.pdb
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\obj\Debug\netcoreapp2.2\TranslationFramework.Servicos.csproj.CopyComplete
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\obj\Debug\netcoreapp2.2\TranslationFramework.Servicos.dll
+D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\obj\Debug\netcoreapp2.2\TranslationFramework.Servicos.pdb

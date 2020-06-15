@@ -5,9 +5,19 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TranslationFramework.API", "TranslationFramework\TranslationFramework.API.csproj", "{EB0AB704-F349-42EF-9501-02402ED77339}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranslationFramework.Servicos", "TranslationFramework.Servicos\TranslationFramework.Servicos.csproj", "{90224D23-BE3A-4DE7-9B60-D5A9CCB662DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TranslationFramework.Servicos", "TranslationFramework.Servicos\TranslationFramework.Servicos.csproj", "{90224D23-BE3A-4DE7-9B60-D5A9CCB662DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranslationFramework.Comum", "TranslationFramework.Comum\TranslationFramework.Comum.csproj", "{9110A8F8-BDF5-43A0-97A3-7C6F7BC581C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TranslationFramework.Comum", "TranslationFramework.Comum\TranslationFramework.Comum.csproj", "{9110A8F8-BDF5-43A0-97A3-7C6F7BC581C4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TranslationFramework.Modelos", "TranslationFramework.Model\TranslationFramework.Modelos.csproj", "{244609E6-0B8E-4C19-A347-721C299D5156}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TranslationFramework.DTO", "TranslationFramework.DTO\TranslationFramework.DTO.csproj", "{E1D3526B-9F19-4A21-A6B3-BE5ECD391FAF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TranslationFramework.Dados", "TranslationFramework.Repositorio\TranslationFramework.Dados.csproj", "{78886694-B539-4313-8D5B-1C59B99BC395}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranslationFramework.Enumeradores", "TranslationFrameworkEnumeradores\TranslationFramework.Enumeradores.csproj", "{B40024F2-85DA-4F81-BC11-D595387614AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranslationFramework.Teste", "TranslationFramework.Teste\TranslationFramework.Teste.csproj", "{FEFFDE01-F8A0-42AB-8CE7-FDE45A057447}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +37,26 @@ Global
 		{9110A8F8-BDF5-43A0-97A3-7C6F7BC581C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9110A8F8-BDF5-43A0-97A3-7C6F7BC581C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9110A8F8-BDF5-43A0-97A3-7C6F7BC581C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{244609E6-0B8E-4C19-A347-721C299D5156}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{244609E6-0B8E-4C19-A347-721C299D5156}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{244609E6-0B8E-4C19-A347-721C299D5156}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{244609E6-0B8E-4C19-A347-721C299D5156}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1D3526B-9F19-4A21-A6B3-BE5ECD391FAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1D3526B-9F19-4A21-A6B3-BE5ECD391FAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1D3526B-9F19-4A21-A6B3-BE5ECD391FAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1D3526B-9F19-4A21-A6B3-BE5ECD391FAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78886694-B539-4313-8D5B-1C59B99BC395}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78886694-B539-4313-8D5B-1C59B99BC395}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78886694-B539-4313-8D5B-1C59B99BC395}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78886694-B539-4313-8D5B-1C59B99BC395}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B40024F2-85DA-4F81-BC11-D595387614AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B40024F2-85DA-4F81-BC11-D595387614AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B40024F2-85DA-4F81-BC11-D595387614AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B40024F2-85DA-4F81-BC11-D595387614AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEFFDE01-F8A0-42AB-8CE7-FDE45A057447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEFFDE01-F8A0-42AB-8CE7-FDE45A057447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEFFDE01-F8A0-42AB-8CE7-FDE45A057447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEFFDE01-F8A0-42AB-8CE7-FDE45A057447}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TranslationFramework.Comum\TranslationFramework.Comum.csproj" />
+    <ProjectReference Include="..\TranslationFramework.Repositorio\TranslationFramework.Dados.csproj" />
   </ItemGroup>
 
 </Project>
