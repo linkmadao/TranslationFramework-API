@@ -30,3 +30,11 @@ D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\Translatio
 D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\obj\Debug\netcoreapp2.2\TranslationFramework.Servicos.csproj.CopyComplete
 D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\obj\Debug\netcoreapp2.2\TranslationFramework.Servicos.dll
 D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\obj\Debug\netcoreapp2.2\TranslationFramework.Servicos.pdb
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.Dados.dll
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.DTO.dll
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.Enumeradores.dll
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.Modelos.dll
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.Dados.pdb
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.DTO.pdb
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.Enumeradores.pdb
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework.Servicos\bin\Debug\netcoreapp2.2\TranslationFramework.Modelos.pdb

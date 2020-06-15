@@ -8,6 +8,8 @@ namespace TranslationFramework.DTO
 
         public int Linha { get; set; }
 
+        public string Coluna { get; set; }
+
         public string Offset { get; set; }
 
         public string Original { get; set; }

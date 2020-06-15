@@ -2444,12 +2444,11 @@
       ]
     },
     "runtime.native.System.Security.Cryptography.Apple/4.3.0": {
-      "sha512": "DloMk88juo0OuOWr56QG7MNchmafTLYWvABy36izkrLI5VledI0rq28KGs1i9wbpeT9NPQrx/wTf8U2vazqQ3Q==",
+      "sha512": "jwjwlEL0Elv6gwoyaokRn12nv/JE+UW/DXJEbzhjCPvGbef36StnHKc9XaZD/rGWqYicrphZ7eumR/jdmNcjRg==",
       "type": "package",
       "path": "runtime.native.system.security.cryptography.apple/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.0/_._",
@@ -2500,12 +2499,11 @@
       ]
     },
     "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.Apple/4.3.0": {
-      "sha512": "kVXCuMTrTlxq4XOOMAysuNwsXWpYeboGddNGpIgNSZmv1b6r/s/DPk0fYMB7Q5Qo4bY68o48jt4T4y5BVecbCQ==",
+      "sha512": "Kh9W4agE0r/hK8AX1LvyQI2NrKHBL8pO0gRoDTdDb0LL6Ta1Z2OtFx3lOaAE0ZpCUc/dt9Wzs3rA7a3IsKdOVA==",
       "type": "package",
       "path": "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.apple/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.apple.4.3.0.nupkg.sha512",
@@ -4990,24 +4988,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Tiago\\.nuget\\packages\\": {},
+    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projetos\\Tradução de Jogos\\Tradutor Web\\TranslationFramework-API\\TranslationFramework\\TranslationFramework.Servicos\\TranslationFramework.Servicos.csproj",
+      "projectUniqueName": "C:\\Users\\User\\source\\repos\\Pessoal\\TranslationFramework-API\\TranslationFramework\\TranslationFramework.Servicos\\TranslationFramework.Servicos.csproj",
       "projectName": "TranslationFramework.Servicos",
-      "projectPath": "D:\\Projetos\\Tradução de Jogos\\Tradutor Web\\TranslationFramework-API\\TranslationFramework\\TranslationFramework.Servicos\\TranslationFramework.Servicos.csproj",
-      "packagesPath": "C:\\Users\\Tiago\\.nuget\\packages\\",
-      "outputPath": "D:\\Projetos\\Tradução de Jogos\\Tradutor Web\\TranslationFramework-API\\TranslationFramework\\TranslationFramework.Servicos\\obj\\",
+      "projectPath": "C:\\Users\\User\\source\\repos\\Pessoal\\TranslationFramework-API\\TranslationFramework\\TranslationFramework.Servicos\\TranslationFramework.Servicos.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\source\\repos\\Pessoal\\TranslationFramework-API\\TranslationFramework\\TranslationFramework.Servicos\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Tiago\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
@@ -5019,8 +5020,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "D:\\Projetos\\Tradução de Jogos\\Tradutor Web\\TranslationFramework-API\\TranslationFramework\\TranslationFramework.Repositorio\\TranslationFramework.Dados.csproj": {
-              "projectPath": "D:\\Projetos\\Tradução de Jogos\\Tradutor Web\\TranslationFramework-API\\TranslationFramework\\TranslationFramework.Repositorio\\TranslationFramework.Dados.csproj"
+            "C:\\Users\\User\\source\\repos\\Pessoal\\TranslationFramework-API\\TranslationFramework\\TranslationFramework.Repositorio\\TranslationFramework.Dados.csproj": {
+              "projectPath": "C:\\Users\\User\\source\\repos\\Pessoal\\TranslationFramework-API\\TranslationFramework\\TranslationFramework.Repositorio\\TranslationFramework.Dados.csproj"
             }
           }
         }
@@ -5055,7 +5056,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TranslationFramework.Dados;
 
 namespace TranslationFramework.Dados.Migrations
 {
     [DbContext(typeof(AplicacaoContexto))]
-    partial class AplicacaoContextoModelSnapshot : ModelSnapshot
+    [Migration("20200615195136_Alteração-coluna-linhaArquivo")]
+    partial class AlteraçãocolunalinhaArquivo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

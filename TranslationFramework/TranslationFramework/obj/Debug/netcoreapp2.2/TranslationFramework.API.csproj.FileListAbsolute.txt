@@ -54,3 +54,11 @@ D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\Translatio
 D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\obj\Debug\netcoreapp2.2\TranslationFramework.API.dll
 D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\obj\Debug\netcoreapp2.2\TranslationFramework.API.pdb
 D:\Projetos\Tradução de Jogos\Tradutor Web\TranslationFramework-API\TranslationFramework\TranslationFramework\obj\Debug\netcoreapp2.2\TranslationFramework.API.genruntimeconfig.cache
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.Dados.dll
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.DTO.dll
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.Enumeradores.dll
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.Modelos.dll
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.Dados.pdb
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.DTO.pdb
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.Enumeradores.pdb
+C:\Users\User\source\repos\Pessoal\TranslationFramework-API\TranslationFramework\TranslationFramework\bin\Debug\netcoreapp2.2\TranslationFramework.Modelos.pdb
