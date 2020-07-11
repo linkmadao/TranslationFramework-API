@@ -45,15 +45,16 @@ namespace TranslationFramework.API.Controllers
         {
             try
             {
-                await _arquivosServico.GravarPlanilha(arquivo);
-                return Ok(MensagensSistema.OperacaoOk);
+                var resultado = await _arquivosServico.GravarPlanilha(arquivo);
+                return Ok(resultado);
+                //return Ok(MensagensSistema.OperacaoOk);
             }
             catch (RegraDeNegocioException e)
             {
                 var guid = Guid.NewGuid();
                 return BadRequest(new ResultadoOperacao(false, MensagensSistema.Erro500RegraNegocio + e.Message, guid));
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 var guid = Guid.NewGuid();
                 return BadRequest(new ResultadoOperacao(false, MensagensSistema.Erro500 + guid.ToString(), guid));

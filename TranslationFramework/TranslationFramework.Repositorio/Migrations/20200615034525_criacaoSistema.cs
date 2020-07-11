@@ -8,7 +8,7 @@ namespace TranslationFramework.Dados.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Projeto",
+                name: "Projetos",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -16,7 +16,7 @@ namespace TranslationFramework.Dados.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Projeto", x => x.Id);
+                    table.PrimaryKey("PK_Projetos", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -36,7 +36,7 @@ namespace TranslationFramework.Dados.Migrations
                     table.ForeignKey(
                         name: "FK_Arquivos_Projeto_ProjetoId",
                         column: x => x.ProjetoId,
-                        principalTable: "Projeto",
+                        principalTable: "Projetos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });

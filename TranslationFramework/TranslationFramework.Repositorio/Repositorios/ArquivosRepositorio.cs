@@ -25,8 +25,11 @@ namespace TranslationFramework.Dados.Repositorios
             if (arquivo == null)
             {
                 arquivo = arquivoDTO.ConverterParaModel();
-                arquivo.Id = Guid.NewGuid();
                 arquivo.DataUltimaAlteracao = DateTime.Now;
+                arquivo.ProjetoId = Guid.Parse("b847ec64-c1ce-4d96-b5ac-00b77849318a");
+                arquivo.Linhas = arquivoDTO.Linhas
+                    .Select(o => o.ConverterParaModel())
+                    .ToList();
 
                 _contexto.Arquivos.Add(arquivo);
             }
@@ -34,6 +37,7 @@ namespace TranslationFramework.Dados.Repositorios
             {
                 arquivoDTO.Id = arquivo.Id;
                 arquivo = arquivoDTO.ConverterParaModel();
+                arquivo.DataUltimaAlteracao = DateTime.Now;
 
                 _contexto.Entry(arquivo).State = EntityState.Modified;
             }
@@ -46,10 +50,20 @@ namespace TranslationFramework.Dados.Repositorios
 
         public async Task<ArquivoDTO> Obter(Guid id)
         {
-            return await QueryBase()
+            var resultado = await _contexto.Arquivos
                 .Where(o => o.Id.Equals(id))
-                .Select(f => f.ConverterParaDTO())
                 .FirstOrDefaultAsync();
+
+            if (resultado != null)
+            {
+                resultado.Linhas = await _contexto.LinhasArquivo
+                    .Where(o => o.ArquivoId.Equals(resultado.Id))
+                    .OrderBy(o => o.Coluna)
+                        .ThenBy(o => o.Linha)
+                    .ToListAsync();
+            }
+
+            return resultado.ConverterParaDTO();
         }
 
         public Microsoft.EntityFrameworkCore.Query

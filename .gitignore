@@ -377,3 +377,4 @@ MigrationBackup/
 
 # Configurações Específicas
 *.cache
+*.applicationhost.config

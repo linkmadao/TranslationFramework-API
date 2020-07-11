@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using TranslationFramework.Comum;
 
 namespace TranslationFramework.Modelos
 {
@@ -25,15 +24,9 @@ namespace TranslationFramework.Modelos
 
         public ICollection<LinhaArquivo> Linhas { get; set; }
 
-        [IgnorarBind]
-        public decimal PorcentagemTraduzida { get; set; }
-
         #region Foreing Key
         [Required]
         public Guid ProjetoId { get; set; }
-
-        [IgnorarBind]
-        public Projeto Projeto { get; set; }
         #endregion Foreing Key
     }
 }

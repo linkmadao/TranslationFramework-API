@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TranslationFramework.Comum;
 
 namespace TranslationFramework.DTO
 {
@@ -14,6 +15,9 @@ namespace TranslationFramework.DTO
 
         public string Nome { get; set; }
 
+        public string SteamId { get; set; }
+
+        [IgnorarBind]
         public ICollection<ArquivoDTO> Arquivos { get; set; }
     }
 }

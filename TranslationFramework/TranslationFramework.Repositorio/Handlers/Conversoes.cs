@@ -83,8 +83,8 @@ namespace TranslationFramework.Dados.Handlers
                                 .FirstOrDefault(f => f.CustomAttributes.Any(g => g.AttributeType == typeof(KeyAttribute)));
 
                             if (keyTo == null ||
-                                (keyTo.PropertyType == typeof(int) && (int)keyTo.GetValue(listaTo[i]) == 0) ||
-                                (keyTo.PropertyType == typeof(Guid) && (Guid)keyTo.GetValue(listaTo[i]) == Guid.Empty))
+                                ((keyTo.PropertyType == typeof(int) && (int)keyTo.GetValue(listaTo[i]) == 0) ||
+                                (keyTo.PropertyType == typeof(Guid) && (Guid)keyTo.GetValue(listaTo[i]) == Guid.Empty)))
                             {
                                 continue;
                             }
@@ -96,8 +96,8 @@ namespace TranslationFramework.Dados.Handlers
                                 var keyFrom = item.GetType().GetProperty(keyTo.Name);
 
                                 if (keyFrom == null ||
-                                (keyFrom.PropertyType == typeof(int) && (int)keyTo.GetValue(item) == 0) ||
-                                (keyFrom.PropertyType == typeof(Guid) && (Guid)keyTo.GetValue(item) == Guid.Empty))
+                                    (keyFrom.PropertyType == typeof(int) && (int)keyFrom.GetValue(item) == 0) ||
+                                    (keyFrom.PropertyType == typeof(Guid) && (Guid)keyFrom.GetValue(item) == Guid.Empty))
                                 {
                                     continue;
                                 }

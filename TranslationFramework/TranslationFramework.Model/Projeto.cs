@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TranslationFramework.Modelos
 {
-    [Table("Projeto")]
+    [Table("Projetos")]
     public class Projeto
     {
         public Projeto()
@@ -17,6 +17,8 @@ namespace TranslationFramework.Modelos
         public Guid Id { get; set; }
 
         public string Nome { get; set; }
+        
+        public string SteamId { get; set; }
 
         public ICollection<Arquivo> Arquivos { get; set; }
     }

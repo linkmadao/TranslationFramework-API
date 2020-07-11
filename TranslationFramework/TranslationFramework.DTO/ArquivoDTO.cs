@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TranslationFramework.Comum;
 
 namespace TranslationFramework.DTO
 {
@@ -18,8 +19,10 @@ namespace TranslationFramework.DTO
 
         public string Caminho { get; set; }
 
+        [IgnorarBind]
         public ICollection<LinhaArquivoDTO> Linhas { get; set; }
 
+        [IgnorarBind]
         public decimal PorcentagemTraduzida { get; set; }
 
         public Guid ProjetoId { get; set; }
