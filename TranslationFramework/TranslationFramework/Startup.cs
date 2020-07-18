@@ -4,9 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 using TranslationFramework.Dados;
 using TranslationFramework.Dados.Repositorios;
 using TranslationFramework.Servicos;
+using System;
+using System.Reflection;
+using System.IO;
 
 namespace TranslationFramework.API
 {
@@ -27,6 +31,31 @@ namespace TranslationFramework.API
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            // Register the Swagger generator, defining 1 or more Swagger documents
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "TranslationFramework API",
+                    Description = "",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Tiago Silva Miguel",
+                        Url = new Uri("https://www.linkedin.com/in/tiagosilvamiguel/")
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "GNU General Public License v2.0",
+                        Url = new Uri("https://github.com/linkmadao/TranslationFramework-API/blob/develop/LICENSE"),
+                    }
+                });
+
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
         }
 
         private void InstanciarInjecaoDependeciaRepositorios(IServiceCollection services)
@@ -55,6 +84,17 @@ namespace TranslationFramework.API
             }
 
             app.UseHttpsRedirection();
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "TranslationFramework.API V1");
+            });
+
             app.UseMvc();
         }
     }

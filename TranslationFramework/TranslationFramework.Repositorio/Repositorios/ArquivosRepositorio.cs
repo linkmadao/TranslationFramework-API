@@ -19,32 +19,43 @@ namespace TranslationFramework.Dados.Repositorios
         {
             var arquivo = await _contexto.Arquivos
                 .FirstOrDefaultAsync(o =>
-                    o.NomeArquivo.Equals(arquivoDTO.NomeArquivo) &&
-                    o.Caminho.Equals(arquivoDTO.Caminho));
+                    o.Id.Equals(arquivoDTO.Id) || 
+                    (o.NomeArquivo.Equals(arquivoDTO.NomeArquivo) &&
+                    o.Caminho.Equals(arquivoDTO.Caminho)));
 
-            if (arquivo == null)
+            bool cadastro = false;
+            
+            if (arquivo is null)
             {
-                arquivo = arquivoDTO.ConverterParaModel();
-                arquivo.DataUltimaAlteracao = DateTime.Now;
-                arquivo.ProjetoId = Guid.Parse("b847ec64-c1ce-4d96-b5ac-00b77849318a");
-                arquivo.Linhas = arquivoDTO.Linhas
-                    .Select(o => o.ConverterParaModel())
-                    .ToList();
+                cadastro = true;
+            }
+            else
+            {
+                _contexto.Entry(arquivo).State = EntityState.Detached;
+            }
 
+            arquivo = arquivoDTO.ConverterParaModel();
+            arquivo.DataUltimaAlteracao = DateTime.Now;
+            arquivo.Linhas = arquivoDTO.Linhas
+                .Select(o => o.ConverterParaModel())
+                .ToList();
+
+            if (cadastro)
+            {
+                arquivo.Id = Guid.NewGuid();
                 _contexto.Arquivos.Add(arquivo);
             }
             else
             {
-                arquivoDTO.Id = arquivo.Id;
-                arquivo = arquivoDTO.ConverterParaModel();
-                arquivo.DataUltimaAlteracao = DateTime.Now;
-
                 _contexto.Entry(arquivo).State = EntityState.Modified;
             }
+
+
 
             if (salvarContexto)
             {
                 await _contexto.SaveChangesAsync();
+                _contexto.Entry(arquivo).State = EntityState.Detached;
             }
         }
 
@@ -54,16 +65,23 @@ namespace TranslationFramework.Dados.Repositorios
                 .Where(o => o.Id.Equals(id))
                 .FirstOrDefaultAsync();
 
-            if (resultado != null)
+            if (resultado == null)
             {
-                resultado.Linhas = await _contexto.LinhasArquivo
+                return null;
+            }
+
+            _contexto.Entry(resultado).State = EntityState.Detached;
+
+            var arquivoDTO = resultado.ConverterParaDTO();
+
+            arquivoDTO.Linhas = await _contexto.LinhasArquivo
                     .Where(o => o.ArquivoId.Equals(resultado.Id))
                     .OrderBy(o => o.Coluna)
                         .ThenBy(o => o.Linha)
+                    .Select(f => f.ConverterParaDTO())
                     .ToListAsync();
-            }
 
-            return resultado.ConverterParaDTO();
+            return arquivoDTO;
         }
 
         public Microsoft.EntityFrameworkCore.Query

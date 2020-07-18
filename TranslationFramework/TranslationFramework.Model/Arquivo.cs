@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using TranslationFramework.Comum;
 
 namespace TranslationFramework.Modelos
 {
@@ -22,6 +23,7 @@ namespace TranslationFramework.Modelos
 
         public string Caminho { get; set; }
 
+        [IgnorarBind]
         public ICollection<LinhaArquivo> Linhas { get; set; }
 
         #region Foreing Key
