@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
-using OfficeOpenXml;
+﻿using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using TranslationFramework.Comum;
 using TranslationFramework.Comum.Constantes;
@@ -35,14 +35,57 @@ namespace TranslationFramework.Servicos
             {
                 foreach (var linha in arquivo.Linhas)
                 {
-                    linha.Original = ProcessaTexto(linha.Original, false);
-                    linha.Traducao = ProcessaTexto(linha.Traducao, false);
+                    linha.OriginalDecodificada = linha.Original.ConvertUtf8ToString();
+                    linha.Original = null;
+
+                    linha.TraducaoDecodificada = linha.Traducao.ConvertUtf8ToString();
+                    linha.Traducao = null;
                 }
 
+                arquivo.StreamArquivo = null;
                 arquivo.PorcentagemTraduzida = CalcularPorcentagemTraducao(arquivo);
             }
 
             return arquivo;
+        }
+
+        public async Task<bool> Atualizar(ArquivoDTO arquivoDTO)
+        { 
+            if (arquivoDTO.Id == Guid.Empty)
+            {
+                throw new RegraDeNegocioException(MensagensSistema.AtualizarArquivoInexistente);
+            }
+
+            var arquivo = await _arquivosRepositorio.Obter(arquivoDTO.Id);
+            if(arquivo == null)
+            {
+                throw new RegraDeNegocioException(MensagensSistema.AtualizarArquivoInexistente);
+            }
+
+            var arquivoModificado = false;
+
+            foreach (var linha in arquivoDTO.Linhas)
+            {
+                var linhaAtual = arquivo.Linhas.FirstOrDefault(o => o.Traducao.ConvertUtf8ToString().Equals(linha.TraducaoDecodificada));
+
+                if (!arquivoModificado && linhaAtual == null)//linhaAtual.Traducao != traducaoDecodificada)
+                {
+                    arquivoModificado = true;
+                }
+
+                linha.Original = linha.OriginalDecodificada.ConvertStringToUtf8();
+                linha.OriginalDecodificada = null;
+
+                linha.Traducao = linha.TraducaoDecodificada.ConvertStringToUtf8();
+                linha.TraducaoDecodificada = null;
+            }
+
+            if (arquivoModificado)
+            {
+                await _arquivosRepositorio.CadastrarEditar(arquivoDTO);
+            }
+            
+            return arquivoModificado;
         }
 
         /// <summary>
@@ -50,25 +93,14 @@ namespace TranslationFramework.Servicos
         /// </summary>
         /// <param name="arquivo">Informações do arquivo excel</param>
         /// <returns></returns>
-        public async Task<Guid> GravarPlanilha(ArquivoDTO arquivo)
+        private async Task Cadastrar(ArquivoDTO arquivo)
         {
-            var byteArray = File.ReadAllBytes(VerificarExistencia(arquivo));
-            Stream stream = new MemoryStream(byteArray);
-
-            arquivo.Caminho = arquivo.Caminho.Substring(27);
-            if (string.IsNullOrEmpty(arquivo.Caminho))
-            {
-                arquivo.Caminho = @"\";
-            }
-
-            arquivo.Id = Guid.NewGuid();
-
-            using (var pck = new ExcelPackage(stream))
+            using (var pck = new ExcelPackage(arquivo.StreamArquivo))
             {
                 var ws = pck.Workbook.Worksheets[0];
 
-                int totalColunas = ws.Dimension.End.Column;
-                int totalLinhas = ws.Dimension.End.Row;
+                int totalColunas = ws.GetValuedDimension().End.Column;
+                int totalLinhas = ws.GetValuedDimension().End.Row;
 
                 for (int row = 2; row <= totalLinhas; row++)
                 {
@@ -93,17 +125,16 @@ namespace TranslationFramework.Servicos
                                         linha.Offset = ws.Cells[row, col].Value.ToString();
                                         break;
                                     case 2:
-                                        linha.Original = ProcessaTexto(ws.Cells[row, col].Value.ToString());
+                                        linha.Original = ws.Cells[row, col].Value.ConvertStringToUtf8();
                                         break;
                                     case 3:
-                                        linha.Traducao = ProcessaTexto(ws.Cells[row, col].Value.ToString());
+                                        linha.Traducao = ws.Cells[row, col].Value.ConvertStringToUtf8();
                                         break;
                                 }
                                 break;
 
                             case 4:
-                                YakuzaKiwamiColunasPermitidas colunasPermitidas;
-                                if (Enum.TryParse(ws.Cells[row, 1].Value.ToString(), true, out colunasPermitidas))
+                                if (Enum.TryParse(ws.Cells[row, 1].Value.ToString(), true, out YakuzaKiwamiColunasPermitidas _))
                                 {
                                     switch (col)
                                     {
@@ -114,19 +145,18 @@ namespace TranslationFramework.Servicos
                                             linha.Linha = int.Parse(ws.Cells[row, col].Value.ToString()) + 1;
                                             break;
                                         case 3:
-                                            linha.Original = ProcessaTexto(ws.Cells[row, col].Value.ToString());
+                                            linha.Original = ws.Cells[row, col].Value.ConvertStringToUtf8();
                                             break;
                                         case 4:
-                                            linha.Traducao = ProcessaTexto(ws.Cells[row, col].Value.ToString());
+                                            linha.Traducao = ws.Cells[row, col].Value.ConvertStringToUtf8();
                                             break;
                                     }
-                                    break;
                                 }
                                 else
                                 {
                                     cadastrar = false;
-                                    break;
                                 }
+                                break;
                         }
                     }
 
@@ -138,8 +168,41 @@ namespace TranslationFramework.Servicos
             }
 
             await _arquivosRepositorio.CadastrarEditar(arquivo);
+        }
 
-            return arquivo.Id;
+        public async Task CarregaArquivos(CarregaArquivosDTO arquivos)
+        {
+            if (arquivos.ProjetoId.Equals(Guid.Empty))
+            {
+                throw new RegraDeNegocioException(MensagensSistema.IdDoProjetoNaoInformado);
+            }
+
+            if (string.IsNullOrEmpty(arquivos.Caminho))
+            {
+                throw new RegraDeNegocioException(MensagensSistema.CaminhoInexistente);
+            }
+
+            if (!arquivos.Arquivos.Any())
+            {
+                throw new RegraDeNegocioException(MensagensSistema.NenhumArquivoFoiSelecionado);
+            }
+
+            foreach (var arquivo in arquivos.Arquivos)
+            {
+                if (arquivo.Length > 0)
+                {
+                    var stream = new MemoryStream();
+                    await arquivo.CopyToAsync(stream, new CancellationToken());
+
+                    await Cadastrar(new ArquivoDTO()
+                    {
+                        Caminho = arquivos.Caminho,
+                        NomeArquivo = arquivo.FileName,
+                        ProjetoId = arquivos.ProjetoId,
+                        StreamArquivo = stream,
+                    });
+                }
+            }
         }
 
         private decimal CalcularPorcentagemTraducao(ArquivoDTO arquivo)
@@ -149,9 +212,9 @@ namespace TranslationFramework.Servicos
 
             foreach (var linha in arquivo.Linhas)
             {
-                if ((!string.IsNullOrEmpty(linha.Original) &&
-                    !string.IsNullOrEmpty(linha.Traducao)) &&
-                    !linha.Original.Equals(linha.Traducao))
+                if ((!string.IsNullOrEmpty(linha.OriginalDecodificada) &&
+                    !string.IsNullOrEmpty(linha.TraducaoDecodificada)) &&
+                    !linha.OriginalDecodificada.Equals(linha.TraducaoDecodificada))
                 {
                     linhasModificadas += 1;
                 }
@@ -163,139 +226,6 @@ namespace TranslationFramework.Servicos
             }
 
             return Math.Round(linhasModificadas * 100 / totalLinhas, 2);
-        }
-
-        private string ProcessaTexto(string texto, bool entrada = true)
-        {
-            if (!string.IsNullOrEmpty(texto))
-            { 
-                var dicionario = new Dictionary<string, string>();
-
-                #region Numeros e Caracteres
-                dicionario.Add("%", "&#37;");
-                dicionario.Add("<", "&#60;");
-                dicionario.Add(">", "&#62;");
-                dicionario.Add("\n", "&#92;n");
-                dicionario.Add("\r", "&#92;r");
-                dicionario.Add(@"\", "&#92;");
-                dicionario.Add("○", "&#9675;");
-                dicionario.Add("ー", "---");
-
-                dicionario.Add("２", "2j");
-                #endregion Numeros
-
-                #region A
-                dicionario.Add("ア", "A ");
-                #endregion A
-
-                #region B
-                dicionario.Add("バ", "Ba ");
-                dicionario.Add("防", "Boo ");
-                #endregion B
-
-                #region D
-                dicionario.Add("ダ", "Da ");
-                #endregion D
-
-                #region G
-                dicionario.Add("具", "Gu ");
-                #endregion G
-
-                #region H
-                dicionario.Add("菱", "Hishi ");
-                dicionario.Add("細", "Hoso ");
-                #endregion H
-
-                #region I
-                dicionario.Add("要", "Io ");
-                #endregion I
-
-                #region J
-                dicionario.Add("ジ", "Ji ");
-                dicionario.Add("重", "Ju ");
-                #endregion J
-
-                #region K
-                dicionario.Add("駆", "Kakeru ");
-                dicionario.Add("刀", "Katana ");
-                dicionario.Add("川", "Kawa ");
-                dicionario.Add("飾", "Kazari ");
-                dicionario.Add("殊", "Koto ");
-                dicionario.Add("ク", "Ku ");
-                #endregion K
-
-                #region M
-                dicionario.Add("丸", "Maru ");
-                dicionario.Add("メ", "Me ");
-                #endregion M
-
-                #region N
-                dicionario.Add("長", "Naga ");
-                dicionario.Add("ノ", "No ");
-                #endregion N
-
-                #region O
-                dicionario.Add("錘", "Omori ");
-                #endregion O
-
-                #region R
-                dicionario.Add("リ", "Ri ");
-                dicionario.Add("ル", "Ru ");
-                #endregion R
-
-                #region S
-                dicionario.Add("四", "Shi ");
-                dicionario.Add("装", "So ");
-                #endregion S
-
-                #region T
-                dicionario.Add("武", "Take ");
-                dicionario.Add("特", "Toku ");
-                dicionario.Add("ト", "To ");
-                dicionario.Add("通", "Tsu ");
-                dicionario.Add("紡", "Tsumugi ");
-                dicionario.Add("常", "Tsune ");
-                #endregion T
-
-                #region U
-                dicionario.Add("海", "Umi ");
-                dicionario.Add("器", "Utsuwa ");
-                #endregion U
-
-
-                foreach (var item in dicionario)
-                {
-                    if (entrada)
-                    {
-                        texto = texto.Replace(item.Key, item.Value);
-                        continue;
-                    }                    
-
-                    texto = texto.Replace(item.Value, item.Key);
-                }
-            }
-
-            return texto;
-        }
-
-        private string VerificarExistencia(ArquivoDTO arquivo)
-        {
-            if (string.IsNullOrEmpty(arquivo.Caminho))
-            {
-                throw new RegraDeNegocioException(MensagensSistema.CaminhoInexistente);
-            }
-            if (string.IsNullOrEmpty(arquivo.NomeArquivo))
-            {
-                throw new RegraDeNegocioException(MensagensSistema.NomeArquivoInexistente);
-            }
-
-            string caminhoArquivo = Path.Combine(arquivo.Caminho, arquivo.NomeArquivo);
-            if (!File.Exists(caminhoArquivo))
-            {
-                throw new RegraDeNegocioException(MensagensSistema.ArquivoNaoEncontrado);
-            }
-
-            return caminhoArquivo;
         }
     }
 }

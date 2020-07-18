@@ -1,4 +1,5 @@
 ﻿using System;
+using TranslationFramework.Comum;
 
 namespace TranslationFramework.DTO
 {
@@ -12,9 +13,15 @@ namespace TranslationFramework.DTO
 
         public string Offset { get; set; }
 
-        public string Original { get; set; }
+        public byte[] Original { get; set; }
 
-        public string Traducao { get; set; }
+        [IgnorarBind]
+        public string OriginalDecodificada { get; set; }
+
+        public byte[] Traducao { get; set; }
+
+        [IgnorarBind]
+        public string TraducaoDecodificada { get; set; }
 
         public Guid ArquivoId { get; set; }
     }

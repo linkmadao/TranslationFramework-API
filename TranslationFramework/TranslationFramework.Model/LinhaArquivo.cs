@@ -16,9 +16,9 @@ namespace TranslationFramework.Modelos
 
         public string Offset { get; set; }
 
-        public string Original { get; set; }
+        public byte[] Original { get; set; }
 
-        public string Traducao { get; set; }
+        public byte[] Traducao { get; set; }
 
         #region Foreing Key
         [Required]
