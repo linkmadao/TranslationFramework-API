@@ -1,11 +1,11 @@
 # TranslationFramework-API
-Descrição curta sobre o que seu projeto faz.
+API que auxilia a tradução de jogos, filmes e animes.
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Downloads Stats][npm-downloads]][npm-url]
 
-De um a dois parágrafos sobre o que é seu projeto e o que ele faz.
+Este projeto está sendo desenvolvido para agilizar traduções, sejam elas de jogos, animes ou até filmes.
 
 ![](social-preview.png)
 
