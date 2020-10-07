@@ -40,16 +40,6 @@ npm test
 
 ## Histórico de lançamentos
 
-* 0.2.1
-    * MUDANÇA: Atualização de docs (código do módulo permanece inalterado)
-* 0.2.0
-    * MUDANÇA: Remove `setDefaultXYZ()`
-    * ADD: Adiciona `init()`
-* 0.1.1
-    * CONSERTADO: Crash quando chama `baz()` (Obrigado @NomeDoContribuidorGeneroso!)
-* 0.1.0
-    * O primeiro lançamento adequado
-    * MUDANÇA: Renomeia `foo()` para `bar()`
 * 0.0.1
     * Trabalho em andamento
 
@@ -57,16 +47,16 @@ npm test
 
 Tiago Silva Miguel – [Linkedin](https://www.linkedin.com/in/tiagosilvamiguel/)
 
-Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
+Distribuído sob a licença GNU General Public License v2.0. Veja `LICENSE` para mais informações.
 
 [https://github.com/linkmadao/TranslationFramework-API](https://github.com/linkmadao/)
 
-## Contributing
+## Contribuindo / Contributing
 
 1. Faça o _fork_ do projeto (<https://github.com/linkmadao/TranslationFramework-API/fork>)
-2. Crie uma _branch_ para sua modificação (`git checkout -b feature/fooBar`)
-3. Faça o _commit_ (`git commit -am 'Add some fooBar'`)
-4. _Push_ (`git push origin feature/fooBar`)
+2. Crie uma _branch_ para sua modificação (`git checkout -b feature/new-search`)
+3. Faça o _commit_ (`git commit -am 'Add new search'`)
+4. _Push_ (`git push origin feature/new-search`)
 5. Crie um novo _Pull Request_
 
 [npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
