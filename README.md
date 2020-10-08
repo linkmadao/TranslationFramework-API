@@ -1,5 +1,5 @@
 # TranslationFramework-API
-API que auxilia a tradução de jogos, filmes e animes.
+API para agilizar traduções de jogos, filmes e animes.
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
