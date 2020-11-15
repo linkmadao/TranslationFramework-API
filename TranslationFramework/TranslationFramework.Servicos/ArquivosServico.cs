@@ -1,6 +1,5 @@
 ﻿using OfficeOpenXml;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -31,20 +30,19 @@ namespace TranslationFramework.Servicos
         {
             var arquivo = await _arquivosRepositorio.Obter(id);
 
-            if (arquivo != null)
+            if (arquivo == null) return null;
+
+            foreach (var linha in arquivo.Linhas)
             {
-                foreach (var linha in arquivo.Linhas)
-                {
-                    linha.OriginalDecodificada = linha.Original.ConvertUtf8ToString();
-                    linha.Original = null;
+                linha.OriginalDecodificada = linha.Original.ConvertUtf8ToString();
+                linha.Original = null;
 
-                    linha.TraducaoDecodificada = linha.Traducao.ConvertUtf8ToString();
-                    linha.Traducao = null;
-                }
-
-                arquivo.StreamArquivo = null;
-                arquivo.PorcentagemTraduzida = CalcularPorcentagemTraducao(arquivo);
+                linha.TraducaoDecodificada = linha.Traducao.ConvertUtf8ToString();
+                linha.Traducao = null;
             }
+
+            arquivo.StreamArquivo = null;
+            arquivo.PorcentagemTraduzida = CalcularPorcentagemTraducao(arquivo);
 
             return arquivo;
         }
@@ -68,7 +66,7 @@ namespace TranslationFramework.Servicos
             {
                 var linhaAtual = arquivo.Linhas.FirstOrDefault(o => o.Traducao.ConvertUtf8ToString().Equals(linha.TraducaoDecodificada));
 
-                if (!arquivoModificado && linhaAtual == null)//linhaAtual.Traducao != traducaoDecodificada)
+                if (!arquivoModificado && linhaAtual == null) // linhaAtual.Traducao != traducaoDecodificada)
                 {
                     arquivoModificado = true;
                 }
@@ -99,8 +97,8 @@ namespace TranslationFramework.Servicos
             {
                 var ws = pck.Workbook.Worksheets[0];
 
-                int totalColunas = ws.GetValuedDimension().End.Column;
-                int totalLinhas = ws.GetValuedDimension().End.Row;
+                var totalColunas = ws.GetValuedDimension().End.Column;
+                var totalLinhas = ws.GetValuedDimension().End.Row;
 
                 for (int row = 2; row <= totalLinhas; row++)
                 {
@@ -189,19 +187,18 @@ namespace TranslationFramework.Servicos
 
             foreach (var arquivo in arquivos.Arquivos)
             {
-                if (arquivo.Length > 0)
-                {
-                    var stream = new MemoryStream();
-                    await arquivo.CopyToAsync(stream, new CancellationToken());
+                if (arquivo.Length <= 0) continue;
 
-                    await Cadastrar(new ArquivoDTO()
-                    {
-                        Caminho = arquivos.Caminho,
-                        NomeArquivo = arquivo.FileName,
-                        ProjetoId = arquivos.ProjetoId,
-                        StreamArquivo = stream,
-                    });
-                }
+                var stream = new MemoryStream();
+                await arquivo.CopyToAsync(stream, new CancellationToken());
+
+                await Cadastrar(new ArquivoDTO()
+                {
+                    Caminho = arquivos.Caminho,
+                    NomeArquivo = arquivo.FileName,
+                    ProjetoId = arquivos.ProjetoId,
+                    StreamArquivo = stream,
+                });
             }
         }
 
@@ -220,12 +217,7 @@ namespace TranslationFramework.Servicos
                 }
             }
 
-            if (linhasModificadas == 0)
-            {
-                return 0;
-            }
-
-            return Math.Round(linhasModificadas * 100 / totalLinhas, 2);
+            return linhasModificadas == 0 ? 0 : Math.Round(linhasModificadas * 100 / totalLinhas, 2);
         }
     }
 }

@@ -74,12 +74,15 @@ namespace TranslationFramework.Dados.Repositorios
 
             var arquivoDTO = resultado.ConverterParaDTO();
 
-            arquivoDTO.Linhas = await _contexto.LinhasArquivo
-                    .Where(o => o.ArquivoId.Equals(resultado.Id))
-                    .OrderBy(o => o.Coluna)
-                        .ThenBy(o => o.Linha)
-                    .Select(f => f.ConverterParaDTO())
-                    .ToListAsync();
+            var linhas = await _contexto.LinhasArquivo
+                .Where(o => o.ArquivoId.Equals(resultado.Id))
+                .OrderBy(o => o.Coluna)
+                .ThenBy(o => o.Linha)
+                .ToListAsync();
+
+            arquivoDTO.Linhas = linhas
+                .Select(f => f.ConverterParaDTO())
+                .ToList();
 
             return arquivoDTO;
         }

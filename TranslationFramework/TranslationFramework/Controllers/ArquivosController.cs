@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 using TranslationFramework.Comum;
@@ -9,9 +8,7 @@ using TranslationFramework.Servicos;
 
 namespace TranslationFramework.API.Controllers
 {
-    [Produces("application/json")]
-    [ApiController]
-    public class ArquivosController : Controller
+    public class ArquivosController : BaseController
     {
         private readonly ArquivosServico _arquivosServico;
 
@@ -39,7 +36,7 @@ namespace TranslationFramework.API.Controllers
                 var guid = Guid.NewGuid();
                 return BadRequest(new ResultadoOperacao(false, MensagensSistema.Erro500RegraNegocio + e.Message, guid));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 var guid = Guid.NewGuid();
                 return BadRequest(new ResultadoOperacao(false, MensagensSistema.Erro500 + guid.ToString(), guid));
@@ -74,7 +71,7 @@ namespace TranslationFramework.API.Controllers
                 var guid = Guid.NewGuid();
                 return BadRequest(new ResultadoOperacao(false, MensagensSistema.Erro500RegraNegocio + e.Message, guid));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 var guid = Guid.NewGuid();
                 return BadRequest(new ResultadoOperacao(false, MensagensSistema.Erro500 + guid.ToString(), guid));
@@ -82,7 +79,7 @@ namespace TranslationFramework.API.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Cadastra arquivos em excel no sistema
         /// </summary>
         /// <param name="arquivos"></param>
         /// <returns></returns>
@@ -100,7 +97,7 @@ namespace TranslationFramework.API.Controllers
                 var guid = Guid.NewGuid();
                 return BadRequest(new ResultadoOperacao(false, MensagensSistema.Erro500RegraNegocio + e.Message, guid));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 var guid = Guid.NewGuid();
                 return BadRequest(new ResultadoOperacao(false, MensagensSistema.Erro500 + guid.ToString(), guid));

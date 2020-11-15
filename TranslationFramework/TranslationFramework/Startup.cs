@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +10,7 @@ using TranslationFramework.Servicos;
 using System;
 using System.Reflection;
 using System.IO;
+using Microsoft.Extensions.Hosting;
 
 namespace TranslationFramework.API
 {
@@ -21,7 +21,7 @@ namespace TranslationFramework.API
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -29,7 +29,7 @@ namespace TranslationFramework.API
             InstanciarInjecaoDependeciaRepositorios(services);
             InstanciarInjecaoDependenciaServicos(services);
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc();//.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
@@ -42,12 +42,12 @@ namespace TranslationFramework.API
                     Contact = new OpenApiContact
                     {
                         Name = "Tiago Silva Miguel",
-                        Url = new Uri("https://www.linkedin.com/in/tiagosilvamiguel/")
+                        Url = new Uri(@"https://www.linkedin.com/in/tiagosilvamiguel/")
                     },
                     License = new OpenApiLicense
                     {
                         Name = "GNU General Public License v2.0",
-                        Url = new Uri("https://github.com/linkmadao/TranslationFramework-API/blob/develop/LICENSE"),
+                        Url = new Uri(@"https://github.com/linkmadao/TranslationFramework-API/blob/develop/LICENSE"),
                     }
                 });
 
@@ -71,7 +71,7 @@ namespace TranslationFramework.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -83,7 +83,9 @@ namespace TranslationFramework.API
                 app.UseHsts();
             }
 
+            
             app.UseHttpsRedirection();
+            app.UseRouting();
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
@@ -95,7 +97,7 @@ namespace TranslationFramework.API
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "TranslationFramework.API V1");
             });
 
-            app.UseMvc();
+            app.UseEndpoints(endpoints => endpoints.MapControllers());
         }
     }
 }

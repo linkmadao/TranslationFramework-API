@@ -380,4 +380,8 @@ MigrationBackup/
 *.applicationhost.config
 
 # Variáveis de ambiente
-*appsettings*
+appsettings*
+appsettings.json
+**/appsettings.json
+**/appsettings*
+

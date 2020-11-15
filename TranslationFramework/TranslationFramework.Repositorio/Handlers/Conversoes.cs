@@ -128,7 +128,6 @@ namespace TranslationFramework.Dados.Handlers
                                 }
                                 else
                                 {
-                                    // Código inacessível detectado
                                     #pragma warning disable CS0162 
                                     listaTo.RemoveAt(i);
                                     i -= 1;
@@ -182,21 +181,17 @@ namespace TranslationFramework.Dados.Handlers
             var classFrom = propertyBase.GetValue(from);
             if (classFrom != null)
             {
-                var classTo = propertyBase.GetValue(to);
-                if (classTo == null)
-                {
-                    classTo = Convert.ChangeType(Activator.CreateInstance(propertyTo.PropertyType), propertyTo.PropertyType);
-                }
+                var classTo = propertyBase.GetValue(to) ?? Convert.ChangeType(Activator.CreateInstance(propertyTo.PropertyType), propertyTo.PropertyType);
 
                 var returnClass = ConverterPara(classFrom, classTo);
 
-                to.GetType().GetProperty(propertyBase.Name).SetValue(to, returnClass);
+                to.GetType().GetProperty(propertyBase.Name)?.SetValue(to, returnClass);
             }
         }
 
         private static void ConversaoTipoSimples<F, T>(PropertyInfo propertyBase, F from, T to)
         {
-            to.GetType().GetProperty(propertyBase.Name).SetValue(to, propertyBase.GetValue(from));
+            to.GetType().GetProperty(propertyBase.Name)?.SetValue(to, propertyBase.GetValue(from));
         }
     }
 }
