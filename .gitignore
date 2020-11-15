@@ -378,3 +378,6 @@ MigrationBackup/
 # Configurações Específicas
 *.cache
 *.applicationhost.config
+
+# Variáveis de ambiente
+*appsettings*
