@@ -1,13 +1,7 @@
 # TranslationFramework-API
 API para agilizar traduções de jogos, filmes e animes.
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
-
 Este projeto está sendo desenvolvido para agilizar traduções, sejam elas de jogos, animes ou até filmes.
-
-![](social-preview.png)
 
 ## Histórico de lançamentos
 
