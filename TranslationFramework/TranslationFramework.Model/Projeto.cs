@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using TranslationFramework.Enumeradores;
 
 namespace TranslationFramework.Modelos
 {
@@ -17,7 +18,9 @@ namespace TranslationFramework.Modelos
         public Guid Id { get; set; }
 
         public string Nome { get; set; }
-        
+
+        public TipoProjeto TipoProjeto { get; set; }
+
         public string SteamId { get; set; }
 
         public ICollection<Arquivo> Arquivos { get; set; }

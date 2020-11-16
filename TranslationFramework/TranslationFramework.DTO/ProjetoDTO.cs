@@ -1,23 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using TranslationFramework.Comum;
+using TranslationFramework.Enumeradores;
 
 namespace TranslationFramework.DTO
 {
-    public class Projeto
+    public class ProjetoDto
     {
-        public Projeto()
+        public ProjetoDto()
         {
-            Arquivos = new List<ArquivoDTO>();
+            Arquivos = new List<ArquivoDto>();
         }
 
         public Guid Id { get; set; }
 
         public string Nome { get; set; }
 
+        public TipoProjeto TipoProjeto { get; set; }
+
         public string SteamId { get; set; }
 
         [IgnorarBind]
-        public ICollection<ArquivoDTO> Arquivos { get; set; }
+        public ICollection<ArquivoDto> Arquivos { get; set; }
     }
 }

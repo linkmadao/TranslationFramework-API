@@ -2,7 +2,6 @@
 using System;
 using System.IO;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using TranslationFramework.Comum;
 using TranslationFramework.Comum.Constantes;
@@ -26,11 +25,12 @@ namespace TranslationFramework.Servicos
         /// </summary>
         /// <param name="id">Id do arquivo cadastrado no banco</param>
         /// <returns>Retorna um JSON com os dados desse arquivo</returns>
-        public async Task<ArquivoDTO> Obter(Guid id)
+        public async Task<ArquivoDto> Obter(Guid id)
         {
             var arquivo = await _arquivosRepositorio.Obter(id);
 
-            if (arquivo == null) return null;
+            if (arquivo == null)
+                throw new RegraDeNegocioException(MensagensSistema.ArquivoInexistente);
 
             foreach (var linha in arquivo.Linhas)
             {
@@ -47,14 +47,10 @@ namespace TranslationFramework.Servicos
             return arquivo;
         }
 
-        public async Task<bool> Atualizar(ArquivoDTO arquivoDTO)
+        public async Task<bool> Atualizar(ArquivoDto arquivoDTO)
         { 
-            if (arquivoDTO.Id == Guid.Empty)
-            {
-                throw new RegraDeNegocioException(MensagensSistema.AtualizarArquivoInexistente);
-            }
-
             var arquivo = await _arquivosRepositorio.Obter(arquivoDTO.Id);
+
             if(arquivo == null)
             {
                 throw new RegraDeNegocioException(MensagensSistema.AtualizarArquivoInexistente);
@@ -66,7 +62,7 @@ namespace TranslationFramework.Servicos
             {
                 var linhaAtual = arquivo.Linhas.FirstOrDefault(o => o.Traducao.ConvertUtf8ToString().Equals(linha.TraducaoDecodificada));
 
-                if (!arquivoModificado && linhaAtual == null) // linhaAtual.Traducao != traducaoDecodificada)
+                if (!arquivoModificado && linhaAtual == null)
                 {
                     arquivoModificado = true;
                 }
@@ -91,26 +87,22 @@ namespace TranslationFramework.Servicos
         /// </summary>
         /// <param name="arquivo">Informações do arquivo excel</param>
         /// <returns></returns>
-        private async Task Cadastrar(ArquivoDTO arquivo)
+        private async Task Cadastrar(ArquivoDto arquivo)
         {
             using (var pck = new ExcelPackage(arquivo.StreamArquivo))
             {
                 var ws = pck.Workbook.Worksheets[0];
 
-                var totalColunas = ws.GetValuedDimension().End.Column;
-                var totalLinhas = ws.GetValuedDimension().End.Row;
+                var totalColunas = ws.ObterDimensoes().End.Column;
+                var totalLinhas = ws.ObterDimensoes().End.Row;
 
-                for (int row = 2; row <= totalLinhas; row++)
+                for (var row = 2; row <= totalLinhas; row++)
                 {
-                    bool cadastrar = true;
+                    var cadastrar = true;
 
-                    var linha = new LinhaArquivoDTO()
-                    {
-                        Id = Guid.NewGuid(),
-                        ArquivoId = arquivo.Id,
-                    };
+                    var linha = new LinhaArquivoDto(Guid.NewGuid(), arquivo.Id);
 
-                    for (int col = 1; col <= totalColunas; col++)
+                    for (var col = 1; col <= totalColunas; col++)
                     {
                         switch (totalColunas)
                         {
@@ -140,7 +132,7 @@ namespace TranslationFramework.Servicos
                                             linha.Coluna = ws.Cells[row, col].Value.ToString();
                                             break;
                                         case 2:
-                                            linha.Linha = int.Parse(ws.Cells[row, col].Value.ToString()) + 1;
+                                            linha.Linha = int.Parse(ws.Cells[row, col].Value.ToString()!) + 1;
                                             break;
                                         case 3:
                                             linha.Original = ws.Cells[row, col].Value.ConvertStringToUtf8();
@@ -168,7 +160,7 @@ namespace TranslationFramework.Servicos
             await _arquivosRepositorio.CadastrarEditar(arquivo);
         }
 
-        public async Task CarregaArquivos(CarregaArquivosDTO arquivos)
+        public async Task CarregaArquivos(CarregaArquivosDto arquivos)
         {
             if (arquivos.ProjetoId.Equals(Guid.Empty))
             {
@@ -190,19 +182,13 @@ namespace TranslationFramework.Servicos
                 if (arquivo.Length <= 0) continue;
 
                 var stream = new MemoryStream();
-                await arquivo.CopyToAsync(stream, new CancellationToken());
+                await arquivo.CopyToAsync(stream);
 
-                await Cadastrar(new ArquivoDTO()
-                {
-                    Caminho = arquivos.Caminho,
-                    NomeArquivo = arquivo.FileName,
-                    ProjetoId = arquivos.ProjetoId,
-                    StreamArquivo = stream,
-                });
+                await Cadastrar(new ArquivoDto(arquivos.Caminho, arquivo.FileName, arquivos.ProjetoId, stream));
             }
         }
 
-        private decimal CalcularPorcentagemTraducao(ArquivoDTO arquivo)
+        private decimal CalcularPorcentagemTraducao(ArquivoDto arquivo)
         {
             decimal totalLinhas = arquivo.Linhas.Count;
             decimal linhasModificadas = 0;
@@ -217,7 +203,9 @@ namespace TranslationFramework.Servicos
                 }
             }
 
-            return linhasModificadas == 0 ? 0 : Math.Round(linhasModificadas * 100 / totalLinhas, 2);
+            return linhasModificadas == 0 
+                ? 0 
+                : Math.Round(linhasModificadas * 100 / totalLinhas, 2);
         }
     }
 }

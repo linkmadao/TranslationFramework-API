@@ -10,7 +10,7 @@ namespace TranslationFramework.Enumeradores
         [Description("Jogo")]
         Jogo = 1,
 
-        [Description("Anime")]
-        Anime = 2
+        [Description("Vídeo")]
+        Video = 2
     }
 }

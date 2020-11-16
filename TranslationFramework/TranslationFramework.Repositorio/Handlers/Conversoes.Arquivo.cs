@@ -5,14 +5,14 @@ namespace TranslationFramework.Dados.Handlers
 {
     public static partial class Conversoes
     {
-        public static Arquivo ConverterParaModel(this ArquivoDTO dto)
+        public static Arquivo ConverterParaModel(this ArquivoDto dto)
         {
             return ConverterPara(dto, new Arquivo());
         }
 
-        public static ArquivoDTO ConverterParaDTO(this Arquivo model)
+        public static ArquivoDto ConverterParaDTO(this Arquivo model)
         {
-            return ConverterPara(model, new ArquivoDTO());
+            return ConverterPara(model, new ArquivoDto());
         }
     }
 }

@@ -2,11 +2,11 @@
 {
     public class BaseRepositorio
     {
-        public AplicacaoContexto _contexto { get; private set; }
+        public AplicacaoContexto Contexto { get; private set; }
 
         public BaseRepositorio(AplicacaoContexto contexto)
         {
-            _contexto = contexto;
+            Contexto = contexto;
         }
     }
 }

@@ -11,57 +11,44 @@ namespace TranslationFramework.Dados.Repositorios
 {
     public class ArquivosRepositorio : BaseRepositorio
     {
+
         public ArquivosRepositorio(AplicacaoContexto contexto) : base(contexto)
         {
         }
         
-        public async Task CadastrarEditar(ArquivoDTO arquivoDTO, bool salvarContexto = true)
+        public async Task CadastrarEditar(ArquivoDto arquivoDTO, bool salvarContexto = true)
         {
-            var arquivo = await _contexto.Arquivos
+            var arquivo = await Contexto.Arquivos
                 .FirstOrDefaultAsync(o =>
                     o.Id.Equals(arquivoDTO.Id) || 
-                    (o.NomeArquivo.Equals(arquivoDTO.NomeArquivo) &&
-                    o.Caminho.Equals(arquivoDTO.Caminho)));
+                    o.NomeArquivo.Equals(arquivoDTO.NomeArquivo) &&
+                    o.Caminho.Equals(arquivoDTO.Caminho));
 
-            bool cadastro = false;
-            
-            if (arquivo is null)
-            {
-                cadastro = true;
-            }
-            else
-            {
-                _contexto.Entry(arquivo).State = EntityState.Detached;
-            }
-
-            arquivo = arquivoDTO.ConverterParaModel();
-            arquivo.DataUltimaAlteracao = DateTime.Now;
-            arquivo.Linhas = arquivoDTO.Linhas
+            var resultado = arquivoDTO.ConverterParaModel();
+            resultado.DataUltimaAlteracao = DateTime.Now;
+            resultado.Linhas = arquivoDTO.Linhas
                 .Select(o => o.ConverterParaModel())
                 .ToList();
 
-            if (cadastro)
+            if (arquivo is null)
             {
-                arquivo.Id = Guid.NewGuid();
-                _contexto.Arquivos.Add(arquivo);
+                resultado.Id = Guid.NewGuid();
+                await Contexto.Arquivos.AddAsync(resultado);
             }
             else
             {
-                _contexto.Entry(arquivo).State = EntityState.Modified;
+                Contexto.Entry(resultado).State = EntityState.Modified;
             }
-
-
 
             if (salvarContexto)
             {
-                await _contexto.SaveChangesAsync();
-                _contexto.Entry(arquivo).State = EntityState.Detached;
+                await Contexto.SaveChangesAsync();
             }
         }
 
-        public async Task<ArquivoDTO> Obter(Guid id)
+        public async Task<ArquivoDto> Obter(Guid id)
         {
-            var resultado = await _contexto.Arquivos
+            var resultado = await Contexto.Arquivos
                 .Where(o => o.Id.Equals(id))
                 .FirstOrDefaultAsync();
 
@@ -70,11 +57,9 @@ namespace TranslationFramework.Dados.Repositorios
                 return null;
             }
 
-            _contexto.Entry(resultado).State = EntityState.Detached;
-
             var arquivoDTO = resultado.ConverterParaDTO();
 
-            var linhas = await _contexto.LinhasArquivo
+            var linhas = await Contexto.LinhasArquivo
                 .Where(o => o.ArquivoId.Equals(resultado.Id))
                 .OrderBy(o => o.Coluna)
                 .ThenBy(o => o.Linha)
@@ -90,7 +75,7 @@ namespace TranslationFramework.Dados.Repositorios
         public Microsoft.EntityFrameworkCore.Query
             .IIncludableQueryable<Arquivo, ICollection<LinhaArquivo>> QueryBase()
         {
-            return _contexto.Arquivos
+            return Contexto.Arquivos
                 .Include(f => f.Linhas);
         }
     }

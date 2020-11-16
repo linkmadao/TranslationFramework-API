@@ -48,7 +48,7 @@ namespace TranslationFramework.Dados.Handlers
                 }
                 catch (Exception e)
                 {
-                    throw new RegraDeNegocioException(string.Format(MensagensSistema.FalhaConverterPropriedade, propertyBase.Name, e.Message));
+                    throw new RegraDeNegocioException(string.Format(MensagensSistema.FalhaAoConverterPropriedade, propertyBase.Name, e.Message));
                 }
             }
 

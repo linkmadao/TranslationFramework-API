@@ -16,13 +16,21 @@ namespace TranslationFramework.Comum
             return typeof(IEnumerable).IsAssignableFrom(type);
         }
 
-        public static ExcelAddressBase GetValuedDimension(this ExcelWorksheet worksheet)
+        public static ExcelAddressBase ObterDimensoes(this ExcelWorksheet worksheet)
         {
             var dimension = worksheet.Dimension;
-            if (dimension == null) return null;
+            
+            if (dimension == null) 
+                return null;
+            
             var cells = worksheet.Cells[dimension.Address];
-            Int32 minRow = 0, minCol = 0, maxRow = 0, maxCol = 0;
+            
+            var minRow = 0;
+            var minCol = 0;
+            var maxRow = 0; 
+            var maxCol = 0;
             var hasValue = false;
+
             foreach (var cell in cells.Where(cell => cell.Value != null))
             {
                 if (!hasValue)
@@ -49,27 +57,23 @@ namespace TranslationFramework.Comum
                     }
                 }
             }
-            return hasValue ? new ExcelAddressBase(minRow, minCol, maxRow, maxCol) : null;
+            return hasValue 
+                ? new ExcelAddressBase(minRow, minCol, maxRow, maxCol) 
+                : null;
         }
 
         public static byte[] ConvertStringToUtf8(this object texto)
         {
-            if (texto == null)
-            {
-                return new byte[] { };
-            }
-
-            return Encoding.UTF8.GetBytes(texto.ToString());
+            return texto == null 
+                ? Array.Empty<byte>() 
+                : Encoding.UTF8.GetBytes(texto.ToString() ?? string.Empty);
         }
 
         public static string ConvertUtf8ToString(this byte[] texto)
         {
-            if (texto == null)
-            {
-                return null;
-            }
-
-            return Encoding.UTF8.GetString(texto);
+            return texto == null 
+                ? null 
+                : Encoding.UTF8.GetString(texto);
         }
     }
 }

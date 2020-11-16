@@ -46,25 +46,23 @@ namespace TranslationFramework.API.Controllers
         /// <summary>
         /// Atualiza um arquivo já cadastrado no sistema
         /// </summary>
-        /// <param name="arquivoDTO"></param>
+        /// <param name="arquivoDto"></param>
         /// <returns>200(OK) ou 304(Sem Alteração)</returns>
         [HttpPut]
         [Route("v1/arquivo/atualizar")]
-        public async Task<IActionResult> Atualizar([FromBody] ArquivoDTO arquivoDTO)
+        public async Task<IActionResult> Atualizar([FromBody] ArquivoDto arquivoDto)
         {
             try
             {
-                var resultado = await _arquivosServico.Atualizar(arquivoDTO);
+                var resultado = await _arquivosServico.Atualizar(arquivoDto);
                 if (resultado)
                 {
                     return Ok(MensagensSistema.ArquivoAtualizadoComSucesso);
                 }
-                else
-                {
-                    // Não há alterações no arquivo
-                    return StatusCode(304);
-                }
-                
+
+                // Não há alterações no arquivo
+                return StatusCode(304);
+
             }
             catch (RegraDeNegocioException e)
             {
@@ -85,7 +83,7 @@ namespace TranslationFramework.API.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("v1/arquivo/gravarPlanilhas")]
-        public async Task<IActionResult> CadastrarArquivos([FromForm] CarregaArquivosDTO arquivos)
+        public async Task<IActionResult> CadastrarArquivos([FromForm] CarregaArquivosDto arquivos)
         {
             try
             {

@@ -5,12 +5,15 @@ using TranslationFramework.Comum;
 
 namespace TranslationFramework.DTO
 {
-    public class ArquivoDTO
+    public class ArquivoDto
     {
-        public ArquivoDTO()
+        public ArquivoDto()
         {
-            Linhas = new List<LinhaArquivoDTO>();
+            Linhas = new List<LinhaArquivoDto>();
         }
+
+        public ArquivoDto(string caminho, string nomeArquivo, Guid projetoId, Stream stream) =>
+            (Caminho, NomeArquivo, ProjetoId, StreamArquivo) = (caminho, nomeArquivo, projetoId, stream);
 
         public Guid Id { get; set; }
 
@@ -24,7 +27,7 @@ namespace TranslationFramework.DTO
         public string Caminho { get; set; }
 
         [IgnorarBind]
-        public ICollection<LinhaArquivoDTO> Linhas { get; set; }
+        public ICollection<LinhaArquivoDto> Linhas { get; set; }
 
         [IgnorarBind]
         public decimal PorcentagemTraduzida { get; set; }

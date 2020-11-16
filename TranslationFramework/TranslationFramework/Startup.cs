@@ -10,6 +10,7 @@ using TranslationFramework.Servicos;
 using System;
 using System.Reflection;
 using System.IO;
+using System.Runtime.CompilerServices;
 using Microsoft.Extensions.Hosting;
 
 namespace TranslationFramework.API
@@ -29,7 +30,7 @@ namespace TranslationFramework.API
             InstanciarInjecaoDependeciaRepositorios(services);
             InstanciarInjecaoDependenciaServicos(services);
 
-            services.AddMvc();//.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc();
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
@@ -42,12 +43,12 @@ namespace TranslationFramework.API
                     Contact = new OpenApiContact
                     {
                         Name = "Tiago Silva Miguel",
-                        Url = new Uri(@"https://www.linkedin.com/in/tiagosilvamiguel/")
+                        Url = new Uri(Configuration["URLs:Linkedin"])
                     },
                     License = new OpenApiLicense
                     {
                         Name = "GNU General Public License v2.0",
-                        Url = new Uri(@"https://github.com/linkmadao/TranslationFramework-API/blob/develop/LICENSE"),
+                        Url = new Uri(Configuration["URLs:Github"]),
                     }
                 });
 
@@ -60,14 +61,16 @@ namespace TranslationFramework.API
 
         private void InstanciarInjecaoDependeciaRepositorios(IServiceCollection services)
         {
-            services.AddDbContext<AplicacaoContexto>(options => options.UseMySql(Configuration["StringConexao:Padrao"]));
+            services.AddDbContext<AplicacaoContexto>(options => options.UseMySql(Configuration["StringConexao:Padrao"], ServerVersion.AutoDetect(Configuration["StringConexao:Padrao"])));
 
             services.AddTransient<ArquivosRepositorio, ArquivosRepositorio>();
+            services.AddTransient<ProjetosRepositorio, ProjetosRepositorio>();
         }
 
-        private void InstanciarInjecaoDependenciaServicos(IServiceCollection services)
+        private static void InstanciarInjecaoDependenciaServicos(IServiceCollection services)
         {
             services.AddTransient<ArquivosServico, ArquivosServico>();
+            services.AddTransient<ProjetosServico, ProjetosServico>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -83,7 +86,6 @@ namespace TranslationFramework.API
                 app.UseHsts();
             }
 
-            
             app.UseHttpsRedirection();
             app.UseRouting();
 
@@ -98,6 +100,16 @@ namespace TranslationFramework.API
             });
 
             app.UseEndpoints(endpoints => endpoints.MapControllers());
+
+            AtualizarBancoAutomaticamente(app);
+        }
+
+        private void AtualizarBancoAutomaticamente(IApplicationBuilder app)
+        {
+            using var serviceScope = app.ApplicationServices.CreateScope();
+
+            var context = serviceScope.ServiceProvider.GetService<AplicacaoContexto>();
+            context?.Database?.Migrate();
         }
     }
 }
