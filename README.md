@@ -1,4 +1,6 @@
 # TranslationFramework-API
+API em desenvolvimento, para avaliar o código vá até a [branch Develop](https://github.com/linkmadao/TranslationFramework-API/tree/develop)
+
 API para agilizar traduções de jogos, filmes e animes.
 
 Este projeto está sendo desenvolvido para agilizar traduções, sejam elas de jogos, animes ou até filmes.
