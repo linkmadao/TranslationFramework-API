@@ -1,12 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using TranslationFramework.Comum;
 using TranslationFramework.Comum.Constantes;
 using TranslationFramework.Servicos;
 
 namespace TranslationFramework.API.Controllers
 {
+    [Authorize]
     public class ProjetosController : BaseController
     {
         private readonly ProjetosServico _projetosServico;
@@ -21,6 +23,7 @@ namespace TranslationFramework.API.Controllers
         /// </summary>
         /// <param name="id">Id do projeto</param>
         /// <returns></returns>
+        [Authorize(Roles = "adm")]
         [HttpGet]
         [Route("v1/projeto/obter/{id}")]
         public async Task<IActionResult> Obter(Guid id)
