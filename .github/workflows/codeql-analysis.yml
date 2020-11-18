@@ -60,8 +60,7 @@ jobs:
     #    and modify them (or add more) to build your code if your project
     #    uses a compiled language
 
-    - run: |
-       dotnet build /p:UseSharedCompilation=false 
+    #- run: |
     #   make bootstrap
     #   make release
 
