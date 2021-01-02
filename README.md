@@ -1,4 +1,11 @@
 # TranslationFramework-API
+
+![GitHub repo size](https://img.shields.io/github/repo-size/linkmadao/TranslationFramework-API?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/linkmadao/TranslationFramework-API?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/linkmadao/TranslationFramework-API?style=for-the-badge)
+![Bitbucket open issues](https://img.shields.io/bitbucket/issues/linkmadao/TranslationFramework-API?style=for-the-badge)
+![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/linkmadao/TranslationFramework-API?style=for-the-badge)
+
 API para agilizar traduções de jogos, filmes e animes.
 
 Este projeto está sendo desenvolvido para agilizar traduções, sejam elas de jogos, animes ou até filmes.
