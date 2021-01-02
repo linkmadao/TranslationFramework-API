@@ -8,14 +8,21 @@
 
 API para agilizar traduções de jogos, filmes e animes.
 
-Este projeto está sendo desenvolvido para agilizar traduções, sejam elas de jogos, animes ou até filmes.
-
 ## Histórico de lançamentos
 
 * 0.0.2
     * Atualizado projeto para .net 5.0
 * 0.0.1
     * Trabalho em andamento
+
+### Ajustes e melhorias
+
+O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
+
+- [x] Processamento de arquivos
+- [ ] Processamento de Projetos
+- [ ] Processamento de Usuários
+- [ ] Token de Segurança
 
 ## Meta
 
@@ -32,10 +39,3 @@ Distribuído sob a licença GNU General Public License v2.0. Veja `LICENSE` para
 3. Faça o _commit_ (`git commit -am 'Add new search'`)
 4. _Push_ (`git push origin feature/new-search`)
 5. Crie um novo _Pull Request_
-
-[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/datadog-metrics
-[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
-[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
-[wiki]: https://github.com/linkmadao/TranslationFramework-API/wiki
